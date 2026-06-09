@@ -1,0 +1,17 @@
+git init: turns an ordinary folder into a Git repository so it can start tracking and saving your project's history.
+git add . : The function of git add . is to prepare all your new and modified files to be saved in your next commit. It tells Git, "Hey, look at everything I changed in this current folder, and get it ready to be saved."
+git -m "add files": git commit: The core command that tells Git to save your work.
+
+-m: Short for "message." It tells Git that you are about to type a quick description of what you changed.
+
+"any message": This is your actual description. You should replace this with a short, meaningful note about what you did (e.g., "git commit -m "fixed login button bug"" or "git commit -m "added dark mode to homepage".
+git branch -M main: renames your current primary branch to "main" to match modern standards like GitHub.
+The command git remote add origin <git link>: links your local computer's Git repository to a remote server online (like GitHub, GitLab, or Bitbucket).
+git push -u origin <main> :push code to github to git.
+it open a login. login and then use your date on github.
+and if your command "git push -u origin main " is no running so, you should have to run these commands.
+git checkout -b my-new-branch: open new branch.
+git add . : to add as I write before.
+git commit -m "New branch" : create new branch.
+git push push -u origin my-new-branch: push code to github.
+
