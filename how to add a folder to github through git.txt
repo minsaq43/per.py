@@ -1,3 +1,4 @@
+open git bash on your computer.
 git init: turns an ordinary folder into a Git repository so it can start tracking and saving your project's history.
 git add . : The function of git add . is to prepare all your new and modified files to be saved in your next commit. It tells Git, "Hey, look at everything I changed in this current folder, and get it ready to be saved."
 git -m "add files": git commit: The core command that tells Git to save your work.
