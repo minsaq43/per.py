@@ -1,0 +1,6 @@
+\\ ls command
+ls : ls (list) just shows you to folders in your computer.
+ls -a : show all files in folders including hidden files.
+ls -l : Shows a detailed, long list of visible files.
+ls -al:It displays a highly detailed list of every single file in the folder, including the hidden ones.
+ls -t: list the most recent file first.
