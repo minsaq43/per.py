@@ -4,3 +4,8 @@ ls -a : show all files in folders including hidden files.
 ls -l : Shows a detailed, long list of visible files.
 ls -al:It displays a highly detailed list of every single file in the folder, including the hidden ones.
 ls -t: list the most recent file first.
+\\ command can be combined 
+ls -lrt : show list files ,recent and time.
+ls -s: show file size
+ls -lh: Shows a detailed list with easy-to-read file sizes.
+ls -r : reverse the sorted list
