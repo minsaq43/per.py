@@ -15,4 +15,3 @@ git checkout -b my-new-branch: open new branch.
 git add . : to add as I write before.
 git commit -m "New branch" : create new branch.
 git push push -u origin my-new-branch: push code to github.
-
