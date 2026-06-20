@@ -1,0 +1,14 @@
+\\ cd command
+cd means change directory.
+cd: cd[directory you wnat to work on.]
+example: cd Documents
+"Difference in use of cd in different operating system"
+
+Mac/Linux: cd /usr/local/bin
+
+Windows: cd C:\Users\Username\Documents
+cd.. : return the parent folder.
+cd ~ (or just cd) : take you to home directory.
+cd - : take back to previous directory.
+cd / : take you to root directory which is the top-level directory of whole your computer system.
+b
