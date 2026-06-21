@@ -1,0 +1,5 @@
+//pwd
+pwd: pwd stands for print working directory.It print the working directory.
+pwd -L (Logical): Prints the path including any symbolic links (shortcuts). This is the default behavior.
+
+pwd -P (Physical): Prints the actual, physical path, avoiding any symbolic links.
