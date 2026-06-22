@@ -1,0 +1,12 @@
+\\ touch command 
+touxh is used to create a file or files . It create empty file or files . it is used as primarily tool.
+Create New, Empty File:
+Run in the terminal 
+touch [filename]
+Create multiple files at once :
+touch report.docx image.png script.js
+Create a batch of numbered files in same format like txt.
+touch {min, max}.txt
+to update a file 
+Modify only
+touch -m min.txt
