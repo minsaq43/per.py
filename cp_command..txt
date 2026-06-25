@@ -1,0 +1,18 @@
+The cp command in Linux and Unix-like operating systems stands for copy.
+ It is used to copy files and directories from one location to another.
+1.Basic Syntax :
+The general structure of the command is:
+cp [options/file] source destination
+source : The file or directory you want to copy.
+destination: Where you want the copy to go(and what you want to name it.)
+2.Common Use Cases
+2.1 Copying a Single File:
+To make a copy of a file in the same directory with a new name:
+cp documents.txt document_backup.txt
+2.2 to copy a file into a different directory(keep the same name):
+cp documents.txt /home/user/backup/
+3.Copying Multiple Files:
+You can list multiple source files as long as the final argument is a directory:
+cp file1.txt file2.txt file3.txt /home/user/backup/
+4. copying a folder to other folder:
+cp -r /home/user/my_folder /home/user/backup_folder
