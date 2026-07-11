@@ -1,0 +1,12 @@
+//The Windows CLI basic 🎉🎉🎉🎉🎉
+cd:Where Am I?
+dir: What's Around me?
+dir /a: Show the hidden files
+cd .. : Take you back to previous directory
+cd /d <path> : Go the path you tell.
+dir /s <file>: find the file on the disk
+type <file>: Allow you to read the sepific file.
+whoami: Who logged in ?
+hostname: What is the name of this computer.
+systeminfo: provide you information about the windows.
+ipconfig: How is this machine connected to the network such as ipv4 and ipv6 and default gateways
