@@ -11,4 +11,3 @@ cd.. : return the parent folder.
 cd ~ (or just cd) : take you to home directory.
 cd - : take back to previous directory.
 cd / : take you to root directory which is the top-level directory of whole your computer system.
-b
