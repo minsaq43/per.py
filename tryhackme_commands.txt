@@ -12,3 +12,4 @@ uname -a :tell on what system are you?
 uname: operating system's name
 df -h : check disk and storage information.
 cat os-release: about he os.
+echo : is for print something. e.g echo Hello! output: Hello! and echo "Hello!" output: Hello! both are same
