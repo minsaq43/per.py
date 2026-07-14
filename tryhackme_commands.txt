@@ -13,3 +13,10 @@ uname: operating system's name
 df -h : check disk and storage information.
 cat os-release: about he os.
 echo : is for print something. e.g echo Hello! output: Hello! and echo "Hello!" output: Hello! both are same
+mkdir : make directory.
+touch : make a file
+rm : for remove a file or files
+rm -R: for remove a directory
+cp <file> <where copy> : copy the content to the other file.
+mv : mv will merge or modify the second file that we provide as an argument. Not only can you use mv to move a file to a new folder, but you can also use mv to rename a file or folder.
+file <filename> : tell the type of file.
