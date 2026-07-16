@@ -1,0 +1,3 @@
+Shodan is a search engine for internet-connected devices. Unlike Google, which indexes websites
+, Shodan indexes device metadata—such as software versions
+, open ports, and geographical locations—for servers, routers, webcams, IoT gadgets, and Industrial Control Systems.
