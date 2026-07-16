@@ -1,0 +1,10 @@
+CVE (Common Vulnerabilities and Exposures) is a publicly available, standardized database that catalogs known cybersecurity vulnerabilities in software and hardware.
+Each flaw receives a unique identifier, allowing security teams, vendors, and researchers worldwide to speak the exact same language when identifying, sharing, and patching security risks.
+<i>How It Works & Its Uses</i>
+Universal Standard: It prevents confusion so that when multiple security tools or vendors discuss a threat, they reference the identical identifier.
+Vulnerability Tracking: Records detail the exact coding mistake or system weakness (often classified via CWE) and rank the danger using the CVSS (0.0 to 10.0 scale).
+Patch Management: Organizations use the CVE List and the U.S. National Vulnerability Database (NVD) to prioritize system updates and protect against active attacks.
+<i>Famous CVE Examples</i>
+Log4Shell (CVE-2021-44228)
+Heartbleed (CVE-2014-0160)
+ProxyLogon (CVE-2021-26855)
