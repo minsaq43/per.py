@@ -20,3 +20,7 @@ rm -R: for remove a directory
 cp <file> <where copy> : copy the content to the other file.
 mv : mv will merge or modify the second file that we provide as an argument. Not only can you use mv to move a file to a new folder, but you can also use mv to rename a file or folder.
 file <filename> : tell the type of file.
+ssh <machine_name>@<machine_ip>: create a secure enivornment .
+nano <file_name>: nano is a text editor to edit the file.
+wget <file_link from internet>: download a file.
+scp <ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt> : for secure copying the file and transfer it.
