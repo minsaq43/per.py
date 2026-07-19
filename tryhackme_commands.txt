@@ -5,7 +5,8 @@ ls -l: details of directories with name of directories with file sizes, premissi
 ls -al: show the hidden files in present directories.
 cd : stands for change directory .cd <directory> for example: cd Documents
 cd .. : back to previous directory.
-find command is for finding a specific file in computer, for example: find ~ -name mission_brief.txt
+find command is for finding a specifgobuster dir -u https://example.com -w /path/to/wordlist.txt
+ic file in computer, for example: find ~ -name mission_brief.txt
 cat : is for read a file.
 whoami: show username
 uname -a :tell on what system are you?
