@@ -25,3 +25,4 @@ ssh <machine_name>@<machine_ip>: create a secure enivornment .
 nano <file_name>: nano is a text editor to edit the file.
 wget <file_link from internet>: download a file.
 scp <ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt> : for secure copying the file and transfer it.
+The grep command is a tool used to search for specific text inside files or command outputs.
