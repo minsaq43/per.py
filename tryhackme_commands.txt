@@ -27,3 +27,4 @@ wget <file_link from internet>: download a file.
 scp <ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt> : for secure copying the file and transfer it.
 The grep command is a tool used to search for specific text inside files or command outputs.
 systemctl is the primary command-line tool used in modern Linux distributions to manage and interact with the systemd service manager.there are 5 option with it : start, stop, enable, disable and status
+cat * : for read all files at once of the current directory.
