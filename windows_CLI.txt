@@ -10,3 +10,4 @@ whoami: Who logged in ?
 hostname: What is the name of this computer.
 systeminfo: provide you information about the windows.
 ipconfig: How is this machine connected to the network such as ipv4 and ipv6 and default gateways
+cls or clear: clear cmd
