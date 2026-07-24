@@ -20,3 +20,8 @@ ping [target_name]: Tests network connectivity by sending ICMP packets.
 tracert [target_name]: Traces the network route to a target, showing each hop along the way.
 tree to visually represent the child directories and subdirectories.
 mkdir stands for make directory
+tasklist: We can list the running processes using tasklist.
+chkdsk: checks the file system and disk volumes for errors and bad sectors.
+driverquery: displays a list of installed device drivers.
+taskkill PID <PID>: for kill the process.
+sfc /scannow: scans system files for corruption and repairs them if possible.
