@@ -16,3 +16,13 @@ Copy-Item -Path .<path> : copy the item.
 Get-ChildItem -Path ". path": list all the item of given path.
 Get-Content -Path ". path" : The Get-Content cmdlet in PowerShell is a powerful tool used to retrieve the content of items at a specified location, such as the text of a file or the content of a function. This cmdlet reads the content one line at a time and returns a collection of objects, each representing a line of content.
 Sort-Object Length: In PowerShell, Sort-Object Length is commonly used to sort items (like files or strings) by their length property.
+Select-String -Path ".\captain-hat.txt" -Pattern "hat": set of filtering cmdlets is Select-String. This cmdlet searches for text patterns within files, similar to grep in Unix-based systems or findstr in Windows Command Prompt. It’s commonly used for finding specific content within log files or documents
+Get-ComputerInfo: give the information of computer .
+Get-LocalUser: Get-LocalUser lists all the local user accounts on the system. The default output displays, for each user, username, account status, and description.
+Get-NetIPConfiguration: Get-NetIPConfiguration provides detailed information about the network interfaces on the system, including IP addresses, DNS servers, and gateway configurations
+Get-NetIPAddress: the Get-NetIPAddress cmdlet will show details for all IP addresses configured on the system, including those that are not currently active.
+Get-Process : Get-Process provides a detailed view of all currently running processes, including CPU and memory usage, making it a powerful tool for monitoring and troubleshooting.
+Get-Service :  Get-Service allows the retrieval of information about the status of services on the machine, such as which services are running, stopped, or paused. It is used extensively in troubleshooting by system administrators, but also by forensics analysts hunting for anomalous services installed on the system.
+Get-NetTCPConnection : The Get-NetTCPConnection cmdlet in PowerShell retrieves active TCP connections, allowing filtering by state and applied settings. To specifically list established connections that use the Internet applied setting.
+Get-FileHash -Path .\path: we are going to mention Get-FileHash as a useful cmdlet for generating file hashes, which is particularly valuable in incident response, threat hunting, and malware analysis, as it helps verify file integrity and detect potential tampering.
+Invoke-Command: Invoke-Command runs commands locally or remotely on one or more computers via PowerShell remoting.
