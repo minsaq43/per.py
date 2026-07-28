@@ -31,4 +31,5 @@ The wc (word count) command in Linux is used to count lines, words, and bytes in
 systemctl is the primary command-line tool used in modern Linux distributions to manage and interact with the systemd service manager.there are 5 option with it : start, stop, enable, disable and status
 cat * : for read all files at once of the current directory.
 strings: The Linux strings command extracts and prints human-readable text sequences (ASCII characters) from binary or non-text files.
-Dirb is a command-line web content scanner used to discover hidden files and directories on web servers.
+dirb: Dirb is a command-line web content scanner used to discover hidden files and directories on web servers.
+man: The man command is the built-in manual reader for Unix/Linux systems, used to display detailed documentation for commands, system calls, libraries, and more. It organizes information into sections such as NAME, SYNOPSIS, DESCRIPTION, OPTIONS, and EXAMPLES, making it an essential reference tool for both beginners and advanced users. 
