@@ -15,3 +15,4 @@ Remove-Item -Path ".path": remove the item.
 Copy-Item -Path .<path> : copy the item.
 Get-ChildItem -Path ". path": list all the item of given path.
 Get-Content -Path ". path" : The Get-Content cmdlet in PowerShell is a powerful tool used to retrieve the content of items at a specified location, such as the text of a file or the content of a function. This cmdlet reads the content one line at a time and returns a collection of objects, each representing a line of content.
+Sort-Object Length: In PowerShell, Sort-Object Length is commonly used to sort items (like files or strings) by their length property.
