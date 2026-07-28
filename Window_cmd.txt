@@ -26,6 +26,11 @@ driverquery: displays a list of installed device drivers.
 taskkill PID <PID>: for kill the process.
 tasklist /FI "imagename eq file_name": find the file.
 shutdown /s: The command shutdown /s can shut down a system
-shutdown /r: This command restartt the system.
-
+shutdown /r: This command restart the system.
+set : show the details about the system and some hardware.
+ver : tell the version of windows.
+systeminfo: We can run the systeminfo command to list various information about the system such as OS information, system details, processor and memory.
 sfc /scannow: scans system files for corruption and repairs them if possible.
+ping <ip/website's name>: Ping (Packet Internet Groper) is a fundamental network utility used to test the availability and responsiveness of a destination IP address or host. It helps determine whether a specific device or server is operational and measures the time it takes for data to travel between two points, known as latency or round-trip time (RTT). This is crucial for diagnosing network issues and ensuring smooth communication.
+nslookup <website's name>:The nslookup command is a network administration tool used to query the Domain Name System (DNS) to obtain domain name or IP address mapping information. It is commonly used to diagnose DNS infrastructure issues and verify DNS records.
+netstat: The netstat command, short for network statistics, is a powerful tool used to display detailed information about network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. It is available on various operating systems, including Windows, macOS, and Linux.       -a displays all established connections and listening ports                                                                                                       -b shows the program associated with each listening port and established connection                                                                               -o reveals the process ID (PID) associated with the connection                                                                                                    -n uses a numerical form for addresses and port numbers
