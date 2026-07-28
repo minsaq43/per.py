@@ -42,3 +42,9 @@ wget is a command-line utility that supports HTTP, HTTPS, and FTP protocols, all
 1 It can resume interrupted downloads and handle redirects, making it useful for downloading files from web servers. 
 2 By specifying the URL and the file path, it retrieves the file directly from the server to your local directory. 
 3 This command is particularly useful for downloading files from remote servers or websites.
+
+Cron is a time‑based job scheduler for Unix‑like systems, created in 1975 at Bell Labs, that automatically runs commands or scripts at specified times using crontab schedule expressions.
+What Cron Is
+Cron is a daemon (crond) that checks every minute for scheduled tasks and executes those whose time fields match the current time.
+The name comes from the Greek word chronos, meaning “time.” 
+It is available on Linux, macOS, BSD, Solaris, and most Unix-like systems
