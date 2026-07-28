@@ -36,3 +36,9 @@ man: The man command is the built-in manual reader for Unix/Linux systems, used 
 file <file_name> :Determine the type of a file.
 su <user> : switch the user.
 chmod: The chmod command in Linux/UNIX is used to change file and directory permissions. It allows you to control who can read, write, or execute a file by setting access rights for the owner, group, and others.
+python3 -m  http.server: Python 3’s built-in http.server module allows you to quickly create a simple HTTP server for local development, file sharing, or testing.
+wget http://MACHINE_IP:8000/myfile: The command wget http://MACHINE_IP:8000/myfile is used to download a file from a specified URL to your local machine.
+wget is a command-line utility that supports HTTP, HTTPS, and FTP protocols, allowing for non-interactive downloads. 
+1 It can resume interrupted downloads and handle redirects, making it useful for downloading files from web servers. 
+2 By specifying the URL and the file path, it retrieves the file directly from the server to your local directory. 
+3 This command is particularly useful for downloading files from remote servers or websites.
