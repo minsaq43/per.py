@@ -2,10 +2,12 @@
 PowerShell is a powerful tool from Microsoft designed for task automation and configuration management. It combines a command-line interface and a scripting language built on the .NET framework. Unlike older text-based command-line tools, PowerShell is object-oriented, which means it can handle complex data types and interact with system components more effectively. Initially exclusive to Windows, PowerShell has lately expanded to support macOS and Linux, making it a versatile option for IT professionals across different operating systems.
 //commands of Windows PowerShell.
 Get-Content: Retrieves (gets) the content of a file and displays it in the console.
-Set-Location: Changes (sets) the current working directory.
+Set-Location <path>: Changes (sets) the current working directory.
 Get-Command :In PowerShell, Get-Command is used to discover commands (cmdlets, functions, aliases, scripts, and applications) available in your current session or on your system.
 Get-Command -CommandType "Function": lists all functions currently available in your session — including built‑in functions, functions from imported modules, and any you’ve defined yourself.
 Get-Help Get-Date :Get-Help Get-Date displays the help documentation for the Get-Date cmdlet, which retrieves the current date/time or a specified date/time in PowerShell.
 Get-Alias: In PowerShell, aliases are shortcuts to cmdlets, functions, or scripts. To find the owner (i.e., the command or function an alias points to), you can use Get-Alias and inspect its Definition property.
 Find-Module -Name "Module_name*": find the module from the computer.
 Install-Module -Name "PowerShellGet": install the module.
+Get-ChildItem: Get-ChildItem is a PowerShell cmdlet used to list files and directories (child items) in one or more locations. It works similarly to dir in Command Prompt or ls in Linux.
+Tshark: TShark is a command-line network protocol analyzer, part of the Wireshark suite, used for capturing and analyzing network traffic. It supports various extensions and options to enhance its functionality, making it a powerful tool for network diagnostics and analysis
