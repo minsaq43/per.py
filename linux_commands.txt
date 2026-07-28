@@ -34,3 +34,5 @@ strings: The Linux strings command extracts and prints human-readable text seque
 dirb: Dirb is a command-line web content scanner used to discover hidden files and directories on web servers.
 man: The man command is the built-in manual reader for Unix/Linux systems, used to display detailed documentation for commands, system calls, libraries, and more. It organizes information into sections such as NAME, SYNOPSIS, DESCRIPTION, OPTIONS, and EXAMPLES, making it an essential reference tool for both beginners and advanced users. 
 file <file_name> :Determine the type of a file.
+su <user> : switch the user.
+chmod: The chmod command in Linux/UNIX is used to change file and directory permissions. It allows you to control who can read, write, or execute a file by setting access rights for the owner, group, and others.
