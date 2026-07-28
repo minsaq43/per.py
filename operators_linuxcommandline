@@ -1,2 +1,8 @@
 Linux operators are essential tools in shell scripting and command-line operations, enabling users to perform arithmetic, 
 logical, relational, file testing, and redirection tasks. These operators streamline workflows and enhance script functionality.
+Semicolon ; (command separator): it is used to run two or more command in a line and also these run in squence.if first command is incorrect it will give error and run other command.
+Ampersand & : This operator allows you to run commands in the background of your terminal.
+Dollar question-mark $?: show the status of last command run in terminal.
+Logical And operator &&: The && operator in Linux is a logical AND operator used to combine multiple commands. It ensures that the subsequent command executes only if the preceding command is successful (returns a zero exit status)
+Output Redirection > : In Linux, redirection operators are used to control the flow of data between commands and files.for example: ls > files.txt
+>>: This operator does the same function of the > operator but appends the output rather than replacing (meaning nothing is overwritten)
