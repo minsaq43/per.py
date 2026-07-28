@@ -1,0 +1,68 @@
+Python is a high-level, interpreted programming language known for its simple syntax and readability, making it ideal for beginners and professionals alike. It supports multiple paradigms — procedural, object-oriented, and functional programming — and is widely used in web development, data analysis, automation, and AI.
+
+First Program Example:print("Hello, World!") Output: Hello, World!
+The print() function outputs text or variables to the console.
+Comments help explain code:
+# Single-line comment
+"""
+Multi-line comment or docstring
+"""
+Variables store data without explicit type declaration (Python is dynamically typed):
+a = 45 # integer
+b = 1456.8 # float
+c = "Geek" # string
+Common Data Types:
+
+str (string)
+int (integer)
+float (decimal)
+complex (complex numbers)
+list, tuple, dict, set
+bool (True/False)
+bytes (binary data)
+Example:
+x = ["geeks", "for", "geeks"] # list
+x = {"name": "Suraj", "age": 24} # dictionary
+Input/Output:
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+print("Hello", name, "you are", age,"years old.")
+Operators:
+
+Arithmetic: +, -, *, /, //, %, **
+Comparison: ==, !=, >, <, >=, <=
+Logical: and, or, not
+Bitwise: &, |, ^, ~, <<, >>
+Assignment: =, +=, -=, etc.
+Conditional Statements:
+
+i = 20
+if i < 15:
+print("i is smaller than 15")
+elif i == 20:
+print("i is 20")
+else:
+print("i is greater than 15")
+Loops:
+
+# For loop
+for i in range(0, 10, 2):
+print(i)
+
+# While loop
+count = 0
+while count < 3:
+print("Hello Geek")
+count += 1
+
+Functions:
+
+def evenOdd(x):
+if x % 2 == 0:
+print("even")
+else:
+print("odd")
+
+evenOdd(2)
+evenOdd(3)
