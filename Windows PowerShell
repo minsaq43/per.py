@@ -4,3 +4,5 @@ PowerShell is a powerful tool from Microsoft designed for task automation and co
 Get-Content: Retrieves (gets) the content of a file and displays it in the console.
 Set-Location: Changes (sets) the current working directory.
 Get-Command :In PowerShell, Get-Command is used to discover commands (cmdlets, functions, aliases, scripts, and applications) available in your current session or on your system.
+Get-Command -CommandType "Function": lists all functions currently available in your session — including built‑in functions, functions from imported modules, and any you’ve defined yourself.
+Get-Help Get-Date :Get-Help Get-Date displays the help documentation for the Get-Date cmdlet, which retrieves the current date/time or a specified date/time in PowerShell.
