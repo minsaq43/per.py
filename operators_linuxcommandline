@@ -6,3 +6,4 @@ Dollar question-mark $?: show the status of last command run in terminal.
 Logical And operator &&: The && operator in Linux is a logical AND operator used to combine multiple commands. It ensures that the subsequent command executes only if the preceding command is successful (returns a zero exit status)
 Output Redirection > : In Linux, redirection operators are used to control the flow of data between commands and files.for example: ls > files.txt
 >>: This operator does the same function of the > operator but appends the output rather than replacing (meaning nothing is overwritten)
+Pipe | :Piping is a technique used in command-line environments that allows the output of one command to be used as the input for another. This creates a sequence of operations where the data flows from one command to the next. Represented by the | symbol, piping is widely used in the Windows CLI, as introduced earlier in this module, as well as in Unix-based shells.
