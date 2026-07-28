@@ -6,3 +6,6 @@ Set-Location: Changes (sets) the current working directory.
 Get-Command :In PowerShell, Get-Command is used to discover commands (cmdlets, functions, aliases, scripts, and applications) available in your current session or on your system.
 Get-Command -CommandType "Function": lists all functions currently available in your session — including built‑in functions, functions from imported modules, and any you’ve defined yourself.
 Get-Help Get-Date :Get-Help Get-Date displays the help documentation for the Get-Date cmdlet, which retrieves the current date/time or a specified date/time in PowerShell.
+Get-Alias: In PowerShell, aliases are shortcuts to cmdlets, functions, or scripts. To find the owner (i.e., the command or function an alias points to), you can use Get-Alias and inspect its Definition property.
+Find-Module -Name "Module_name*": find the module from the computer.
+Install-Module -Name "PowerShellGet": install the module.
