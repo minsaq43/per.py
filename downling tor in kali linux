@@ -1,1 +1,13 @@
-
+Tor is a free and open-source software for enabling anonymous communication. Tor directs Internet traffic through a free, worldwide, volunteer overlay network consisting of more than seven thousand relays to conceal a user's location and usage from anyone conducting network surveillance or traffic analysis. 
+step 1: Run apt-get install tor to install/update your Tor packages.
+step 2: Run service tor start to start the Tor service.
+step 3: Run service tor status to check Tor's availability.
+step 4: Run service tor stop to stop the Tor service.(not important.)
+step 5: Let's start with running apt install proxychains to install/update proxychains tool.
+step 6: Run nano /etc/proxychains.conf to edit the settings. 
+step 7: We can now see, that most of the methods are under comment mark. You can read their description and decide on using one of them in the future. For this lesson let's uncomment dynamic_chain and comment others (simply put # to the left). Additionally, it is useful to uncomment proxy_dns in order to prevent DNS leak. Scroll through the document and see whenever you want to add some additional proxies at the bottom of the page .
+Step 8: Instead of proxychains firefox, remember that Tor Browser is designed to use the Tor network directly. You generally don't need to configure Firefox + ProxyChains for ordinary private browsing.
+Step 11: Launch Tor Browser and choose its privacy/security level as appropriate. Tor Browser's settings can change between versions, so don't rely on an old “Level 2” label.
+Step 12: The URL itself appears to be the DuckDuckGo onion address you intended. DuckDuckGo confirms that it provides a Tor onion service.
+https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/
+The main issue is likely that .onion addresses only work through the Tor network/Tor Browser. If you paste one into ordinary Chrome, Edge, or Firefox, it won't load.
