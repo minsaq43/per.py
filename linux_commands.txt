@@ -47,5 +47,6 @@ Cron is a time‑based job scheduler for Unix‑like systems, created in 1975 at
 What Cron Is
 Cron is a daemon (crond) that checks every minute for scheduled tasks and executes those whose time fields match the current time.
 The name comes from the Greek word chronos, meaning “time.” 
+ ip a s: means ip address show . it show the ip address.
 echo $SHELL: print the shell type.
 It is available on Linux, macOS, BSD, Solaris, and most Unix-like systems
