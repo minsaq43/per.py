@@ -50,3 +50,7 @@ The name comes from the Greek word chronos, meaning “time.”
  ip a s: means ip address show . it show the ip address.
 echo $SHELL: print the shell type.
 It is available on Linux, macOS, BSD, Solaris, and most Unix-like systems
+-w FILE: Save the Captured Packets. You won’t see the packets scrolling when you choose the -w option.
+-r FILE: Read Captured Packets from a File.
+-c COUNT: You can specify the number of packets to capture by specifying the count using -c COUNT.
+sudo tcpdump -i ens5 -c 5 -n:Tcpdump will resolve IP addresses and print friendly domain names where possible. To avoid making such DNS lookups, you can use the -n argument. Similarly, if you don’t want port numbers to be resolved, such as 80 being resolved to http, you can use the -nn to stop both DNS and port number lookups. Consider the following example shown in the terminal below. We captured and displayed five packets without resolving the IP addresses.
