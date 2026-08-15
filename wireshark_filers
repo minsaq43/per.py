@@ -1,1 +1,44 @@
+Wireshark Filters
+=================
 
+DISPLAY FILTERS
+---------------
+
+Purpose                         Filter
+Show HTTP                       http
+Show DNS                        dns
+Show TCP                        tcp
+Show UDP                        udp
+Show ICMP                       icmp
+Specific IP                    ip.addr == 192.168.1.10
+Source IP                      ip.src == 192.168.1.10
+Destination IP                 ip.dst == 192.168.1.10
+Specific port                  tcp.port == 80
+Source port                   tcp.srcport == 443
+Destination port              tcp.dstport == 80
+Combine conditions             ip.addr == 192.168.1.10 && tcp
+Either condition               dns || http
+Exclude traffic                !arp
+HTTP GET requests              http.request.method == "GET"
+TCP SYN packets                tcp.flags.syn == 1 && tcp.flags.ack == 0
+
+
+CAPTURE FILTERS
+---------------
+
+Purpose                         Filter
+Specific host                  host 192.168.1.10
+Source host                    src host 192.168.1.10
+Destination host               dst host 192.168.1.10
+Specific port                  port 80
+TCP port                       tcp port 443
+Network                        net 192.168.1.0/24
+
+
+NOTE
+----
+Display filters and capture filters use different syntax.
+
+Example:
+Display filter:  tcp.port == 80
+Capture filter:  tcp port 80
