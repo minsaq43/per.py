@@ -33,7 +33,7 @@ Destination host               dst host 192.168.1.10
 Specific port                  port 80
 TCP port                       tcp port 443
 Network                        net 192.168.1.0/24
-
+Get Http method                http.request.method == "GET"etc.
 
 NOTE
 ----
