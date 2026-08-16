@@ -1,0 +1,133 @@
+TCPDUMP NOTES
+
+1. What is tcpdump?
+tcpdump is a command-line packet analyzer used to capture and inspect network traffic.
+
+2. Basic syntax
+tcpdump [options] [filter]
+
+3. Capture packets
+
+Capture packets:
+sudo tcpdump
+
+Capture on a specific interface:
+sudo tcpdump -i eth0
+
+List available interfaces:
+tcpdump -D
+
+4. Useful options
+
+-i eth0     Capture on interface eth0
+-c 10       Capture 10 packets
+-n          Don't resolve hostnames
+-nn         Don't resolve hostnames or ports
+-v          Verbose output
+-vv         More verbose output
+-X          Show packet contents in hex + ASCII
+-A          Show packet contents as ASCII
+-w file.pcap Save packets to a file
+-r file.pcap Read a saved capture
+-s 0        Capture the full packet
+-e          Show Ethernet header
+
+5. Host filters
+
+Capture traffic from a host:
+sudo tcpdump host 192.168.1.10
+
+Source host:
+sudo tcpdump src host 192.168.1.10
+
+Destination host:
+sudo tcpdump dst host 192.168.1.10
+
+6. Port filters
+
+TCP port 80:
+sudo tcpdump tcp port 80
+
+Source port 80:
+sudo tcpdump src port 80
+
+Destination port 443:
+sudo tcpdump dst port 443
+
+7. Protocol filters
+
+TCP:
+sudo tcpdump tcp
+
+UDP:
+sudo tcpdump udp
+
+ICMP:
+sudo tcpdump icmp
+
+ARP:
+sudo tcpdump arp
+
+8. Combining filters
+
+AND:
+sudo tcpdump tcp and port 80
+
+OR:
+sudo tcpdump tcp or udp
+
+NOT:
+sudo tcpdump not port 22
+
+Example:
+sudo tcpdump src host 192.168.1.10 and dst port 80
+
+9. Save and read captures
+
+Save:
+sudo tcpdump -i eth0 -w capture.pcap
+
+Read:
+tcpdump -r capture.pcap
+
+Read without DNS/port resolution:
+tcpdump -nn -r capture.pcap
+
+10. Common useful commands
+
+Capture exactly 20 packets:
+sudo tcpdump -c 20
+
+HTTP traffic:
+sudo tcpdump -nn tcp port 80
+
+HTTPS traffic:
+sudo tcpdump -nn tcp port 443
+
+SSH traffic:
+sudo tcpdump -nn tcp port 22
+
+Show packet contents:
+sudo tcpdump -nn -X
+
+11. Important BPF filters
+
+host 10.0.0.5
+src host 10.0.0.5
+dst host 10.0.0.5
+port 80
+src port 80
+dst port 80
+tcp
+udp
+icmp
+tcp and port 80
+tcp or udp
+not port 22
+
+12. Exam tip
+
+tcpdump filters use BPF (Berkeley Packet Filter) syntax.
+
+Important keywords:
+host, src, dst, port, tcp, udp, icmp, and, or, not
