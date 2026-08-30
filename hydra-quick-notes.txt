@@ -1,0 +1,213 @@
+Hydra — Quick Notes
+
+1. What is Hydra?
+
+Hydra is a password-cracking tool used to test authentication services by trying many username/password combinations.
+
+It supports protocols such as:
+- SSH
+- FTP
+- HTTP/HTTPS forms
+- SMB
+- RDP
+- Telnet
+- SMTP
+- MySQL
+- PostgreSQL
+- and others
+
+Use Hydra only on systems you own or are explicitly authorized to test, such as a TryHackMe lab.
+
+2. Basic Syntax
+
+hydra [options] [target] [protocol]
+
+A common form:
+
+hydra -l USERNAME -P PASSWORD_LIST TARGET SERVICE
+
+Example for a lab SSH target:
+
+hydra -l admin -P passwords.txt 10.10.10.10 ssh
+
+Meaning:
+-l = Single username
+-P = Password list
+TARGET = Authorized target
+ssh = Service/protocol
+
+3. Username + Password Lists
+
+If you have multiple usernames:
+
+hydra -L users.txt -P passwords.txt 10.10.10.10 ssh
+
+This tests combinations from:
+users.txt + passwords.txt
+
+4. Single Username
+
+hydra -l admin -P passwords.txt 10.10.10.10 ssh
+
+Use -l when you already know the username.
+
+5. Single Password
+
+hydra -L users.txt -p password123 10.10.10.10 ssh
+
+Use -p when testing one known password against multiple usernames.
+
+6. SSH
+
+Basic:
+
+hydra -l admin -P passwords.txt TARGET ssh
+
+Different SSH port:
+
+hydra -l admin -P passwords.txt TARGET -s 2222 ssh
+
+7. FTP
+
+hydra -l admin -P passwords.txt TARGET ftp
+
+8. HTTP Login Forms
+
+HTTP forms are a little different because Hydra needs to know the form parameters and the response that indicates failure.
+
+General structure:
+
+hydra -l USER -P passwords.txt TARGET http-post-form "/login.php:user=^USER^&pass=^PASS^:F=Login failed"
+
+Important placeholders:
+
+^USER^
+^PASS^
+
+Hydra replaces these with values from your username/password lists.
+
+F= specifies text indicating a failed login.
+
+For a different form, the exact path, parameter names, and failure message must be determined from the authorized lab application.
+
+9. Useful Options
+
+Verbose:
+
+hydra -v ...
+
+Show every attempt:
+
+hydra -V ...
+
+Stop after finding a valid password:
+
+hydra -f ...
+
+Save results:
+
+hydra -o hydra_results.txt ...
+
+Control parallel connections:
+
+hydra -t 4 ...
+
+For a lab, starting with a small value such as -t 4 can make troubleshooting easier.
+
+10. Combining Options
+
+Example:
+
+hydra -l admin -P passwords.txt -t 4 -V -f -o results.txt 10.10.10.10 ssh
+
+This means:
+-l admin       → username = admin
+-P passwords   → use passwords.txt
+-t 4           → 4 parallel tasks
+-V             → display attempts
+-f             → stop after success
+-o results.txt → save results
+10.10.10.10    → target
+ssh            → service
+
+11. Wordlists
+
+Common wordlists on Kali Linux include:
+
+/usr/share/wordlists/
+
+You can inspect them with:
+
+ls /usr/share/wordlists/
+
+A commonly used collection is SecLists, which contains username and password lists.
+
+12. Checking Hydra Help
+
+hydra -h
+
+For module/protocol information:
+
+hydra -U ssh
+
+You can also see the installed version:
+
+hydra -V
+
+13. Understanding the Output
+
+A successful result may look roughly like:
+
+[22][ssh] host: 10.10.10.10
+login: admin
+password: ********
+
+The important information is:
+- service
+- target
+- username
+- password
+
+14. Quick Cheat Sheet
+
+# Single user + password list
+hydra -l admin -P passwords.txt TARGET ssh
+
+# User list + password list
+hydra -L users.txt -P passwords.txt TARGET ssh
+
+# Single password + user list
+hydra -L users.txt -p password123 TARGET ssh
+
+# Specific port
+hydra -l admin -P passwords.txt -s 2222 TARGET ssh
+
+# Verbose
+hydra -l admin -P passwords.txt -V TARGET ssh
+
+# Stop after success
+hydra -l admin -P passwords.txt -f TARGET ssh
+
+# Save results
+hydra -l admin -P passwords.txt -o results.txt TARGET ssh
+
+# FTP
+hydra -l admin -P passwords.txt TARGET ftp
+
+# HTTP POST form
+hydra -l admin -P passwords.txt TARGET http-post-form "/login:user=^USER^&pass=^PASS^:F=failed"
+
+Most important to remember:
+
+-l  = one Login
+-L  = Login list
+
+-p  = one Password
+-P  = Password list
+
+-t  = Tasks
+-v  = Verbose
+-V  = Very verbose / show attempts
+-f  = Finish after success
+-o  = Output file
+-s  = Port
