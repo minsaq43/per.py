@@ -1,0 +1,226 @@
+GOBUSTER — QUICK NOTES
+
+1. WHAT IS GOBUSTER?
+
+Gobuster is a command-line enumeration tool used to discover resources such as:
+- Hidden directories
+- Files
+- DNS subdomains
+- Virtual hosts
+- Cloud storage buckets
+
+It uses wordlists to test possible names.
+
+Use Gobuster only against systems you own or are explicitly authorized to test, such as CTFs and cybersecurity labs.
+
+
+2. BASIC SYNTAX
+
+gobuster [mode] [options]
+
+Show help:
+
+gobuster help
+
+Show version:
+
+gobuster version
+
+
+3. DIRECTORY ENUMERATION
+
+The most commonly used mode is "dir".
+
+gobuster dir -u http://TARGET -w wordlist.txt
+
+Meaning:
+dir → directory/file enumeration
+-u  → target URL
+-w  → wordlist
+
+Example:
+
+gobuster dir -u http://10.10.10.10 -w /usr/share/wordlists/dirb/common.txt
+
+
+4. USEFUL DIRECTORY OPTIONS
+
+Show selected status codes:
+
+gobuster dir -u http://TARGET -w wordlist.txt -s 200,204,301,302,307,401,403
+
+Add file extensions:
+
+gobuster dir -u http://TARGET -w wordlist.txt -x php,html,txt
+
+This tests possibilities such as:
+
+/index.php
+/login.php
+/about.html
+/robots.txt
+
+Increase threads:
+
+gobuster dir -u http://TARGET -w wordlist.txt -t 50
+
+Use reasonable values in labs and avoid unnecessary load.
+
+Verbose output:
+
+gobuster dir -u http://TARGET -w wordlist.txt -v
+
+Save output:
+
+gobuster dir -u http://TARGET -w wordlist.txt -o gobuster.txt
+
+
+5. DNS ENUMERATION
+
+Gobuster can discover subdomains with the "dns" mode.
+
+gobuster dns -d example.com -w subdomains.txt
+
+Meaning:
+dns            → DNS enumeration
+-d example.com → target domain
+-w             → subdomain wordlist
+
+Example:
+
+gobuster dns -d example.com -w subdomains.txt
+
+Possible results:
+
+admin.example.com
+dev.example.com
+test.example.com
+
+
+6. VIRTUAL HOST ENUMERATION
+
+Gobuster can test virtual hosts:
+
+gobuster vhost -u http://example.com -w subdomains.txt
+
+This is different from DNS enumeration because it tests how the web server responds to different hostnames.
+
+
+7. COMMON WORDLISTS
+
+On Kali Linux, inspect:
+
+ls /usr/share/wordlists/
+
+A common directory wordlist:
+
+/usr/share/wordlists/dirb/common.txt
+
+SecLists is another popular collection:
+
+/usr/share/seclists/
+
+
+8. COMMON OPTIONS
+
+-u  → Target URL
+-w  → Wordlist
+-x  → File extensions
+-s  → Status codes to include
+-t  → Number of threads
+-o  → Output file
+-v  → Verbose output
+-q  → Quiet output
+-k  → Skip TLS certificate verification
+-U  → Username
+-P  → Password
+
+
+9. USEFUL EXAMPLES
+
+Basic:
+
+gobuster dir -u http://TARGET -w wordlist.txt
+
+PHP files:
+
+gobuster dir -u http://TARGET -w wordlist.txt -x php
+
+Multiple extensions:
+
+gobuster dir -u http://TARGET -w wordlist.txt -x php,html,txt
+
+Save results:
+
+gobuster dir -u http://TARGET -w wordlist.txt -o results.txt
+
+More threads:
+
+gobuster dir -u http://TARGET -w wordlist.txt -t 50
+
+HTTPS:
+
+gobuster dir -u https://TARGET -w wordlist.txt
+
+
+10. TYPICAL TRYHACKME WORKFLOW
+
+1. Find the target IP
+2. Check the web service
+3. Identify HTTP/HTTPS
+4. Choose a wordlist
+5. Run Gobuster
+6. Examine discovered directories/files
+7. Investigate interesting results
+
+Example:
+
+gobuster dir -u http://10.10.10.10 -w /usr/share/wordlists/dirb/common.txt
+
+If the site appears to use PHP:
+
+gobuster dir -u http://10.10.10.10 -w /usr/share/wordlists/dirb/common.txt -x php
+
+
+11. QUICK CHEAT SHEET
+
+# Directory enumeration
+gobuster dir -u http://TARGET -w wordlist.txt
+
+# Directory + extensions
+gobuster dir -u http://TARGET -w wordlist.txt -x php,html,txt
+
+# Specify status codes
+gobuster dir -u http://TARGET -w wordlist.txt -s 200,301,302,403
+
+# Increase threads
+gobuster dir -u http://TARGET -w wordlist.txt -t 50
+
+# Save results
+gobuster dir -u http://TARGET -w wordlist.txt -o results.txt
+
+# DNS enumeration
+gobuster dns -d example.com -w subdomains.txt
+
+# Virtual host enumeration
+gobuster vhost -u http://example.com -w subdomains.txt
+
+# Help
+gobuster help
+
+# Version
+gobuster version
+
+
+12. REMEMBER
+
+dir   → directories/files
+dns   → subdomains
+vhost → virtual hosts
+
+-u → URL
+-w → Wordlist
+-x → Extensions
+-s → Status codes
+-t → Threads
+-o → Output
