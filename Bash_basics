@@ -1,0 +1,49 @@
+#What is Bash?
+Bash is used to run commands and write scripts on Unix/Linux systems.
+Bash is the default shell on most Linux and macOS systems.
+#Why Learn Bash?
+Bash is a powerful tool for developers and system administrators.
+Understanding and mastering Bash is important for working in Unix/Linux.
+#Setting Up Bash
+Most Unix/Linux systems come with Bash pre-installed.
+To check if Bash is installed, open a terminal and type: bash --version
+If Bash isn't installed, you can install it using your system's package manager.
+For example, on Ubuntu/Debian, type: sudo apt-get install bash
+#On macOS, you can install Bash via Homebrew:
+brew install bash
+#Common Bash Commands
+Bash commands are how you interact with the operating system and perform tasks.
+
+##Common commands:
+
+ls - List directory contents
+cd - Change the current directory
+pwd - Print the current working directory
+echo - Display a line of text
+cat - Concatenate and display files
+cp - Copy files and directories
+mv - Move or rename files
+rm - Delete files or folders
+touch - Create an empty file or update its time
+mkdir - Create a new folder
+#Example
+
+mkdir my_directory
+cd my_directory
+touch my_file.txt
+ls
+my_file.txt
+#ls(list) command :
+The ls command has a variety of options to customize its output:
+##Options
+
+-l - Long listing format
+-a - Include hidden files
+-h - Human-readable sizes
+-t - Sort by modification time
+-r - Reverse order while sorting
+-R - List subdirectories recursively
+-S - Sort by file size
+-1 - List one file per line
+-d - List directories themselves, not their contents
+-F - Append indicator (one of */=@|) to entries
