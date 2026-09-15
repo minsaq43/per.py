@@ -1,0 +1,471 @@
+============================================================
+                     SQLMAP NOTES
+============================================================
+
+SQLMap is an open-source penetration-testing tool used to
+automate the detection and exploitation of SQL Injection
+vulnerabilities.
+
+IMPORTANT:
+Only use SQLMap against systems you own or have explicit
+permission to test (for example, TryHackMe/HTB labs).
+
+------------------------------------------------------------
+1. INSTALLATION
+------------------------------------------------------------
+
+Linux (Kali):
+    sudo apt update
+    sudo apt install sqlmap
+
+Check installation:
+    sqlmap --version
+
+Run help:
+    sqlmap -h
+
+Advanced help:
+    sqlmap -hh
+
+
+------------------------------------------------------------
+2. BASIC SYNTAX
+------------------------------------------------------------
+
+Basic structure:
+
+    sqlmap -u "URL"
+
+Example:
+
+    sqlmap -u "http://example.com/page.php?id=1"
+
+This tells SQLMap to test the URL parameter for SQL Injection.
+
+
+------------------------------------------------------------
+3. IMPORTANT FLAGS
+------------------------------------------------------------
+
+-u
+    Specify the target URL.
+
+    Example:
+    sqlmap -u "http://lab.local/page.php?id=1"
+
+
+--data
+    Send POST data.
+
+    Example:
+    sqlmap -u "http://lab.local/login" \
+    --data="username=test&password=test"
+
+
+-p
+    Specify the parameter to test.
+
+    Example:
+    sqlmap -u "http://lab.local/page?id=1&cat=2" -p id
+
+
+--cookie
+    Provide a session cookie.
+
+    Example:
+    sqlmap -u "http://lab.local/page?id=1" \
+    --cookie="PHPSESSID=abc123"
+
+
+--user-agent
+    Set a custom User-Agent.
+
+    Example:
+    sqlmap -u "URL" --user-agent="Mozilla/5.0"
+
+
+--random-agent
+    Use a randomly selected User-Agent.
+
+    Example:
+    sqlmap -u "URL" --random-agent
+
+
+--headers
+    Add HTTP headers.
+
+    Example:
+    sqlmap -u "URL" \
+    --headers="X-Test: test"
+
+
+------------------------------------------------------------
+4. DATABASE ENUMERATION FLAGS
+------------------------------------------------------------
+
+--dbs
+    Enumerate available databases.
+
+    Example:
+    sqlmap -u "URL" --dbs
+
+
+-D
+    Select a specific database.
+
+    Example:
+    sqlmap -u "URL" -D database_name
+
+
+--tables
+    List tables in the selected database.
+
+    Example:
+    sqlmap -u "URL" -D database_name --tables
+
+
+-T
+    Select a specific table.
+
+    Example:
+    sqlmap -u "URL" -D database_name -T users
+
+
+--columns
+    List columns of a table.
+
+    Example:
+    sqlmap -u "URL" -D database_name -T users --columns
+
+
+-C
+    Select specific columns.
+
+    Example:
+    sqlmap -u "URL" -D database_name -T users \
+    -C username,email
+
+
+--dump
+    Retrieve data from the selected table.
+
+    Example:
+    sqlmap -u "URL" -D database_name -T users --dump
+
+
+--dump-all
+    Attempt to retrieve data from all databases.
+
+    Use only in an authorized lab.
+
+
+------------------------------------------------------------
+5. INFORMATION GATHERING
+------------------------------------------------------------
+
+--current-db
+    Show the current database.
+
+    Example:
+    sqlmap -u "URL" --current-db
+
+
+--current-user
+    Show the database user.
+
+    Example:
+    sqlmap -u "URL" --current-user
+
+
+--hostname
+    Show the database server hostname.
+
+    Example:
+    sqlmap -u "URL" --hostname
+
+
+--is-dba
+    Check whether the database user has DBA privileges.
+
+    Example:
+    sqlmap -u "URL" --is-dba
+
+
+--banner
+    Retrieve database/server version information.
+
+    Example:
+    sqlmap -u "URL" --banner
+
+
+------------------------------------------------------------
+6. SQL INJECTION TESTING
+------------------------------------------------------------
+
+--batch
+    Automatically answer default questions.
+
+    Example:
+    sqlmap -u "URL" --batch
+
+
+--level
+    Set the level of tests.
+
+    Range:
+    1 - 5
+
+    Example:
+    sqlmap -u "URL" --level=3
+
+
+--risk
+    Set the risk level of tests.
+
+    Range:
+    1 - 3
+
+    Example:
+    sqlmap -u "URL" --risk=2
+
+
+--technique
+    Specify SQL Injection techniques.
+
+    Common letters:
+
+    B = Boolean-based blind
+    E = Error-based
+    U = Union query
+    S = Stacked queries
+    T = Time-based blind
+    Q = Inline queries
+
+    Example:
+    sqlmap -u "URL" --technique=BEU
+
+
+------------------------------------------------------------
+7. REQUEST/TRAFFIC OPTIONS
+------------------------------------------------------------
+
+-r
+    Load an HTTP request from a file.
+
+    Example:
+    sqlmap -r request.txt
+
+This is especially useful when testing requests captured
+from Burp Suite in an authorized lab.
+
+
+--proxy
+    Send traffic through a proxy.
+
+    Example:
+    sqlmap -u "URL" --proxy="http://127.0.0.1:8080"
+
+
+--timeout
+    Set request timeout.
+
+    Example:
+    sqlmap -u "URL" --timeout=10
+
+
+--retries
+    Number of retries for failed HTTP requests.
+
+    Example:
+    sqlmap -u "URL" --retries=3
+
+
+------------------------------------------------------------
+8. OUTPUT / VERBOSITY
+------------------------------------------------------------
+
+-v
+    Set verbosity level.
+
+    Example:
+    sqlmap -u "URL" -v 3
+
+Higher values provide more detailed output.
+
+
+--output-dir
+    Specify where SQLMap should save output.
+
+    Example:
+    sqlmap -u "URL" --output-dir=/tmp/sqlmap
+
+
+------------------------------------------------------------
+9. USEFUL FLAGS FOR LABS
+------------------------------------------------------------
+
+The most useful flags to remember:
+
+    -u
+    --data
+    -p
+    -r
+    --cookie
+    --dbs
+    -D
+    --tables
+    -T
+    --columns
+    -C
+    --dump
+    --current-db
+    --current-user
+    --banner
+    --is-dba
+    --batch
+    --level
+    --risk
+    --technique
+    -v
+
+
+------------------------------------------------------------
+10. COMMON ENUMERATION WORKFLOW
+------------------------------------------------------------
+
+Step 1: Test the URL
+
+    sqlmap -u "URL"
+
+
+Step 2: Find databases
+
+    sqlmap -u "URL" --dbs
+
+
+Step 3: Select a database
+
+    sqlmap -u "URL" -D database_name --tables
+
+
+Step 4: Find columns
+
+    sqlmap -u "URL" -D database_name -T table_name --columns
+
+
+Step 5: Read lab data
+
+    sqlmap -u "URL" -D database_name -T table_name --dump
+
+
+------------------------------------------------------------
+11. POST REQUEST WORKFLOW
+------------------------------------------------------------
+
+If the vulnerable parameter is in POST data:
+
+    sqlmap -u "http://lab.local/login" \
+    --data="username=test&password=test"
+
+To specify the parameter:
+
+    sqlmap -u "http://lab.local/login" \
+    --data="username=test&password=test" \
+    -p username
+
+
+------------------------------------------------------------
+12. BURP SUITE + SQLMAP
+------------------------------------------------------------
+
+In an authorized lab:
+
+1. Capture the HTTP request in Burp Suite.
+2. Save the request as request.txt.
+3. Run:
+
+    sqlmap -r request.txt
+
+This allows SQLMap to reproduce the captured request.
+
+
+------------------------------------------------------------
+13. QUICK CHEAT SHEET
+------------------------------------------------------------
+
+Target:
+    -u "URL"
+
+POST:
+    --data="parameter=value"
+
+Parameter:
+    -p parameter
+
+Request file:
+    -r request.txt
+
+Databases:
+    --dbs
+
+Tables:
+    -D DB --tables
+
+Columns:
+    -D DB -T TABLE --columns
+
+Dump:
+    -D DB -T TABLE --dump
+
+Current database:
+    --current-db
+
+Current user:
+    --current-user
+
+Database banner:
+    --banner
+
+DBA check:
+    --is-dba
+
+Automatic answers:
+    --batch
+
+Test level:
+    --level=3
+
+Risk:
+    --risk=2
+
+Injection techniques:
+    --technique=BEU
+
+Verbose output:
+    -v 3
+
+Proxy:
+    --proxy="http://127.0.0.1:8080"
+
+
+============================================================
+                    END OF NOTES
+============================================================
+
+Learning order:
+
+SQL Basics
+    ↓
+SQL Injection Theory
+    ↓
+Manual SQLi Testing
+    ↓
+Burp Suite
+    ↓
+SQLMap Basics
+    ↓
+SQLMap Enumeration
+    ↓
+TryHackMe / PortSwigger Labs
+    ↓
+Advanced SQL Injection
