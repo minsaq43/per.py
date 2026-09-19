@@ -1,0 +1,268 @@
+PYTHON OS LIBRARY - IMPORTANT FUNCTIONS
+===========================================
+
+The Python `os` library is useful for working with files, folders,
+paths, environment variables, and the operating system.
+
+1. os.getcwd() - Get Current Directory
+--------------------------------------
+Shows the directory where the Python program is currently working.
+
+Example:
+    import os
+    print(os.getcwd())
+
+
+2. os.chdir() - Change Directory
+--------------------------------
+Changes the current working directory.
+
+Example:
+    import os
+    os.chdir("C:\\Users\\Minsa\\Desktop")
+    print(os.getcwd())
+
+
+3. os.listdir() - List Files and Folders
+----------------------------------------
+Lists files and folders inside a directory.
+
+Example:
+    import os
+    print(os.listdir())
+
+You can also specify a directory:
+    print(os.listdir("C:\\Users\\Minsa\\Desktop"))
+
+
+4. os.mkdir() - Create a Folder
+-------------------------------
+Creates one folder.
+
+Example:
+    import os
+    os.mkdir("Minsa")
+
+
+5. os.makedirs() - Create Nested Folders
+----------------------------------------
+Creates multiple levels of folders.
+
+Example:
+    import os
+    os.makedirs("Minsa/Python/OS")
+
+Prevent an error if the folder already exists:
+    os.makedirs("Minsa/Python/OS", exist_ok=True)
+
+
+6. os.rmdir() - Remove an Empty Folder
+--------------------------------------
+Deletes an empty folder.
+
+Example:
+    import os
+    os.rmdir("Minsa")
+
+IMPORTANT:
+os.rmdir() only works when the folder is empty.
+
+
+7. os.remove() - Delete a File
+------------------------------
+Deletes a file.
+
+Example:
+    import os
+    os.remove("test.txt")
+
+WARNING:
+Make sure you are deleting the correct file.
+
+
+8. os.rename() - Rename a File or Folder
+----------------------------------------
+Renames a file or folder.
+
+Example:
+    import os
+    os.rename("old.txt", "new.txt")
+
+For folders:
+    os.rename("OldFolder", "NewFolder")
+
+
+9. os.path.exists() - Check Whether Something Exists
+-----------------------------------------------------
+Checks whether a file or folder exists.
+
+Example:
+    import os
+
+    if os.path.exists("test.txt"):
+        print("File exists")
+
+
+10. os.path.isfile() - Check for a File
+----------------------------------------
+Checks whether a path is a file.
+
+Example:
+    import os
+
+    if os.path.isfile("test.txt"):
+        print("This is a file")
+
+
+11. os.path.isdir() - Check for a Folder
+----------------------------------------
+Checks whether a path is a directory/folder.
+
+Example:
+    import os
+
+    if os.path.isdir("Minsa"):
+        print("This is a folder")
+
+
+12. os.path.join() - Join Path Parts
+------------------------------------
+Builds a path correctly for the operating system.
+
+Example:
+    import os
+
+    path = os.path.join("Users", "Minsa", "Desktop", "test.txt")
+    print(path)
+
+This is better than manually joining paths with slashes.
+
+
+13. os.path.basename() - Get File/Folder Name
+----------------------------------------------
+Gets the final part of a path.
+
+Example:
+    import os
+
+    path = "C:\\Users\\Minsa\\Desktop\\test.txt"
+    print(os.path.basename(path))
+
+Output:
+    test.txt
+
+
+14. os.path.dirname() - Get Directory Name
+-------------------------------------------
+Gets the directory part of a path.
+
+Example:
+    import os
+
+    path = "C:\\Users\\Minsa\\Desktop\\test.txt"
+    print(os.path.dirname(path))
+
+Output:
+    C:\Users\Minsa\Desktop
+
+
+15. os.path.splitext() - Separate Name and Extension
+-----------------------------------------------------
+Separates a filename from its extension.
+
+Example:
+    import os
+
+    name, extension = os.path.splitext("test.txt")
+    print(name)
+    print(extension)
+
+Output:
+    test
+    .txt
+
+
+16. os.environ - Environment Variables
+--------------------------------------
+Provides access to environment variables.
+
+Example:
+    import os
+
+    print(os.environ)
+
+Get one specific variable:
+    print(os.environ.get("PATH"))
+
+Example:
+    username = os.environ.get("USERNAME")
+    print(username)
+
+
+17. os.name - Operating System Type
+-----------------------------------
+Shows the operating-system family.
+
+Example:
+    import os
+    print(os.name)
+
+Common results:
+    nt      -> Windows
+    posix   -> Linux/macOS
+
+
+18. os.system() - Run an OS Command
+-----------------------------------
+Runs a command through the operating system.
+
+Example:
+    import os
+    os.system("echo Hello")
+
+On Windows:
+    os.system("dir")
+
+IMPORTANT:
+Do not pass untrusted user input directly into os.system().
+
+
+RECOMMENDED LEARNING ORDER
+==========================
+Start with these functions:
+
+1. os.getcwd()
+2. os.chdir()
+3. os.listdir()
+4. os.mkdir()
+5. os.makedirs()
+6. os.rmdir()
+7. os.remove()
+8. os.rename()
+9. os.path.exists()
+10. os.path.isfile()
+11. os.path.isdir()
+12. os.path.join()
+13. os.path.basename()
+14. os.path.dirname()
+15. os.path.splitext()
+16. os.environ
+17. os.system()
+
+
+PRACTICE PROJECT
+================
+Create a Python program that:
+
+1. Shows the current directory.
+2. Lists all files and folders.
+3. Creates a folder called "Minsa".
+4. Creates 5 files inside it.
+5. Lists those files.
+6. Renames one file.
+7. Checks whether the file exists.
+8. Deletes the files.
+9. Deletes the folder.
+
+This project will help you understand most of the important
+Python os library basics.
