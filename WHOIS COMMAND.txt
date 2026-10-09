@@ -1,0 +1,65 @@
+WHOIS COMMAND - STUDY NOTES
+-----------------------------
+
+1. WHAT IS WHOIS?
+WHOIS is a protocol and command-line tool used to look up information about a domain name, IP address, or autonomous system.
+It tells you WHO IS behind a domain. It is like a public phonebook for the internet.
+Pronounced as "who-is".
+
+2. PURPOSE OF WHOIS
+- To find out who owns a domain (e.g., google.com)
+- To get registration details: registrar, creation date, expiry date
+- To get name servers and domain status
+- To get contact information of owner (when not hidden)
+- Used by network admins, cybersecurity, and for troubleshooting
+
+3. BASIC SYNTAX
+whois [options] [domain name / IP address]
+
+On Linux, it is pre-installed on most distros. If not:
+sudo apt install whois
+
+On Windows, it is not built-in. Use online WHOIS websites like who.is or whois.com
+
+4. HOW IT WORKS
+1. You type: whois example.com
+2. Your computer queries the WHOIS server for that TLD (.com, .org, .pk etc.)
+3. Server returns the database record for that domain.
+
+5. IMPORTANT FIELDS IN OUTPUT
+Domain Name      - The domain you queried
+Registrar        - Company where domain is registered (e.g., GoDaddy)
+Creation Date    - When the domain was first registered
+Updated Date     - Last time record was changed
+Expiration Date  - When the domain will expire
+Name Servers     - Servers that host DNS for the domain
+Status           - Current status like clientTransferProhibited (locked)
+Registrant Contact - Owner info - often hidden due to privacy
+
+6. EXAMPLES
+Example 1: Lookup a domain
+whois google.com
+
+Example 2: Lookup an IP address
+whois 8.8.8.8
+This will show owner is Google LLC.
+
+Example 3: Query a specific WHOIS server
+whois -h whois.verisign-grs.com google.com
+
+Example 4: Get short output
+whois -H google.com
+
+7. USEFUL OPTIONS
+-h HOST   : Query a specific WHOIS host
+-H        : Hide legal disclaimer text
+--help    : Show help menu
+
+8. IMPORTANT NOTE - PRIVACY & GDPR
+Since 2018 (GDPR), most personal data like email, phone, name is hidden and shows as "REDACTED FOR PRIVACY". You will still see registrar, dates, and name servers.
+
+9. PRACTICAL USES
+1. Check if a domain is available to buy
+2. Find when a domain will expire
+3. Investigate suspicious / fake websites
+4. Network troubleshooting
