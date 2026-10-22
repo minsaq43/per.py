@@ -493,3 +493,58 @@ nmap -sV -O -p- -oA lab-scan 192.168.1.10
 | `--traceroute` | Perform traceroute |
 
 > **Safety reminder:** Advanced scanning can generate significant network traffic and may trigger security systems. Use these commands only against systems you own or have explicit permission to test.
+# Nmap TCP Scan Options
+
+A GitHub-ready reference for the Nmap scan options shown in the screenshots.
+
+> **Authorized use only:** Run scans only against systems you own or have explicit permission to test. Replace the example IP and placeholder values with values from your authorized lab.
+
+## TCP scan types
+
+| Scan type | Command | Purpose / notes |
+|---|---|---|
+| TCP Null Scan | `sudo nmap -sN 10.113.132.230` | Sends TCP probes with no flags set. |
+| TCP FIN Scan | `sudo nmap -sF 10.113.132.230` | Sends TCP probes with the FIN flag set. |
+| TCP Xmas Scan | `sudo nmap -sX 10.113.132.230` | Sends TCP probes with FIN, PSH, and URG flags set. |
+| TCP Maimon Scan | `sudo nmap -sM 10.113.132.230` | Uses the TCP FIN/ACK flag combination. |
+| TCP ACK Scan | `sudo nmap -sA 10.113.132.230` | Helps analyze firewall filtering; it does not directly determine whether a port is open. |
+| TCP Window Scan | `sudo nmap -sW 10.113.132.230` | Uses TCP window responses to help distinguish some port states. |
+| Custom TCP Scan | `sudo nmap --scanflags URGACKPSHRSTSYNFIN 10.113.132.230` | Sets a custom combination of TCP flags. |
+| Spoofed Source IP | `sudo nmap -S SPOOFED_IP 10.113.132.230` | Sets a chosen source IP address; replies may go to that address. Use only in an authorized lab. |
+| Spoofed MAC Address | `sudo nmap --spoof-mac SPOOFED_MAC 10.113.132.230` | Sets a chosen source MAC address on supported local Ethernet scans. |
+| Decoy Scan | `sudo nmap -D DECOY_IP,ME 10.113.132.230` | Adds decoy source addresses to the scan. Use only in an authorized lab. |
+| Idle (Zombie) Scan | `sudo nmap -sI ZOMBIE_IP 10.113.132.230` | Uses a suitable idle host as a side channel; requires an appropriate zombie host. |
+
+## Packet fragmentation
+
+| Option | Meaning |
+|---|---|
+| `-f` | Fragment IP packets; Nmap documents this as splitting packets into small fragments (typically 8 bytes of payload per fragment unit). |
+| `-ff` | Use the `-f` option twice for smaller fragments (typically 16 bytes of IP data per fragment unit, as described in the source notes). |
+
+## Additional options
+
+| Option | Purpose |
+|---|---|
+| `--source-port PORT_NUM` | Specify the source port number. |
+| `--data-length NUM` | Append random data to probes to reach the specified additional data length. |
+| `--reason` | Explain why Nmap assigned a particular port or host state. |
+| `-d` | Enable debugging output. |
+| `-dd` | Enable more detailed debugging output. |
+
+## Notes
+
+- Null, FIN, and Xmas scans often rely on how closed ports respond to unusual TCP flag combinations. Results can vary by operating system and network equipment.
+- Maimon, ACK, and Window scans use different response behavior; an ACK scan is primarily useful for understanding filtering, not for confirming open ports.
+- Firewalls, packet filters, and the target operating system can affect scan results.
+- The IP address `10.113.132.230` is copied from the screenshots as an example target. Replace it with your authorized lab target.
+
+## Basic usage
+
+```bash
+sudo nmap -sN <AUTHORIZED_TARGET>
+sudo nmap -sF <AUTHORIZED_TARGET>
+sudo nmap -sX <AUTHORIZED_TARGET>
+```
+
+For official option details, see the [Nmap Reference Guide](https://nmap.org/book/man.html).
