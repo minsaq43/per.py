@@ -1,0 +1,208 @@
+SQL INJECTION (SQLi) — STUDY NOTES
+Jr Penetration Tester | TryHackMe: SQL Injection Introduction
+=============================================================
+
+Purpose
+-------
+These are original study notes written in my own words. They summarize the main
+SQL Injection concepts covered by the room. They are not a copy of TryHackMe's
+lesson text or walkthrough answers.
+
+Use practical testing only in TryHackMe rooms, your own applications, or systems
+where you have explicit permission.
+
+1. DATABASE AND SQL BASICS
+--------------------------
+A database stores information in an organised way.
+
+Common terms:
+- Database: a collection of related data.
+- Table: data arranged in rows and columns.
+- Row/record: one entry in a table.
+- Column/field: one type of information, such as username or email.
+- Query: an instruction sent to a database.
+- DBMS: software that manages databases, such as MySQL.
+
+Common SQL clauses:
+- SELECT: chooses data to read.
+- FROM: identifies the table.
+- WHERE: filters records.
+- ORDER BY: sorts results.
+- LIMIT: restricts the number of returned rows.
+- UNION: combines the results of compatible SELECT queries.
+
+Example:
+    SELECT username FROM users WHERE id = 1;
+
+This asks the database for the username belonging to the record whose id is 1.
+
+2. WHAT IS SQL INJECTION?
+-------------------------
+SQL Injection (SQLi) is a vulnerability that happens when an application places
+untrusted user input directly into an SQL query. The database may interpret
+that input as part of the SQL command instead of ordinary data.
+
+A typical vulnerable pattern is:
+    query = "SELECT * FROM users WHERE name = '" + user_input + "'"
+
+The problem is mixing SQL instructions and user-controlled data in one string.
+
+Possible impact:
+- Reading information that should not be public.
+- Bypassing an application's login logic.
+- Changing or deleting database records.
+- Exposing database structure or sensitive information.
+
+The actual impact depends on the query, application design, database permissions,
+and other security controls.
+
+3. SQL COMMENTS (MYSQL)
+-----------------------
+Comments tell MySQL to ignore a portion of a query.
+
+Common MySQL comment forms:
+- -- followed by a space: single-line comment.
+- #: single-line comment.
+- /* ... */: block comment.
+
+Why comments matter:
+When input is inserted into the middle of a query, the original query may have
+extra syntax after the input. Comment syntax can affect how the database parses
+the remainder. Exact behaviour depends on the query context and database engine.
+
+4. MAIN TYPES OF SQL INJECTION
+------------------------------
+
+A. In-Band SQL Injection
+The application displays database feedback in the normal response.
+
+Two common forms:
+- Error-Based SQLi: database error messages reveal information about the query
+  or database structure.
+- UNION-Based SQLi: a UNION operation combines results from another SELECT
+  statement with the original query. The SELECT statements must return a
+  compatible number of columns and compatible data types.
+
+B. Blind SQL Injection
+The application does not directly show the query results. The tester infers
+database behaviour from indirect changes.
+
+Common forms:
+- Authentication-based: a change in query logic affects whether login succeeds.
+- Boolean-Based: the page or response differs depending on whether a condition
+  is true or false.
+- Time-Based: response timing changes depending on a condition. Timing tests
+  should be performed carefully and only in a controlled lab.
+
+C. Out-of-Band SQL Injection
+The database causes an external interaction, such as a DNS request, which can
+provide a separate feedback channel. This depends on database features and
+network configuration and is less commonly available.
+
+5. WHERE TO LOOK FOR POSSIBLE INJECTION POINTS
+----------------------------------------------
+In an authorised test, review inputs that may be used in database queries:
+- URL query parameters, such as an article or product ID.
+- Search boxes.
+- Login and registration forms.
+- Comment or feedback forms.
+- Cookies.
+- HTTP headers, if the application uses them in database queries.
+
+A change in behaviour is only a clue, not proof. A single error or unusual
+response does not automatically confirm SQL Injection.
+
+6. A SAFE TESTING MINDSET
+-------------------------
+When working in a deliberately vulnerable training room:
+1. Read the lab instructions and identify the permitted target.
+2. Understand the normal application behaviour first.
+3. Change one input at a time.
+4. Compare normal and test responses.
+5. Record the input location, observed behaviour, and evidence.
+6. Stop if the target is outside the authorised lab scope.
+
+Do not test public websites, school systems, accounts, or other people's
+applications without clear permission.
+
+7. MYSQL AND DATABASE-SPECIFIC DIFFERENCES
+------------------------------------------
+The TryHackMe room uses MySQL syntax for its examples. Other database engines
+may use different:
+- Comment syntax.
+- Built-in functions.
+- System catalogue tables.
+- Data types and query behaviour.
+
+Do not assume a MySQL example will work unchanged on PostgreSQL, Microsoft SQL
+Server, SQLite, or Oracle.
+
+8. PREVENTING SQL INJECTION
+---------------------------
+The strongest primary defence is to use prepared statements (parameterised
+queries). They keep SQL instructions separate from user-supplied values.
+
+Other important protections:
+- Validate input using an allowlist and the expected data type.
+- Use a database account with only the permissions the application needs.
+- Avoid displaying detailed database errors to normal users.
+- Keep database software and application frameworks updated.
+- Use secure coding practices and review database access code.
+- A Web Application Firewall (WAF) can add another layer, but it is not a
+  replacement for parameterised queries.
+
+Important:
+Filtering or blocking a few suspicious characters is not a reliable primary
+defence. Input validation should support parameterised queries, not replace
+them.
+
+9. QUICK REVISION
+-----------------
+Q: What does SQLi stand for?
+A: SQL Injection.
+
+Q: What causes SQL Injection?
+A: Unsafe handling of user input when constructing SQL queries.
+
+Q: What is In-Band SQLi?
+A: Injection where database feedback appears in the application's response.
+
+Q: What is Error-Based SQLi?
+A: An In-Band technique that uses database errors as feedback.
+
+Q: What is UNION-Based SQLi?
+A: A technique that combines results from compatible SELECT queries.
+
+Q: What is Blind SQLi?
+A: SQL Injection where results are inferred from indirect application behaviour.
+
+Q: What is Boolean-Based Blind SQLi?
+A: A technique that observes differences between true and false conditions.
+
+Q: What is Time-Based Blind SQLi?
+A: A technique that observes response-time differences.
+
+Q: What is Out-of-Band SQLi?
+A: A technique that uses a separate channel, such as an external network request,
+  to receive feedback.
+
+Q: What is the best primary defence?
+A: Prepared statements (parameterised queries).
+
+10. KEY TAKEAWAYS
+-----------------
+- SQL Injection is caused by unsafe construction of database queries.
+- User input must be treated as data, never as SQL instructions.
+- SQLi can be In-Band, Blind, or Out-of-Band.
+- In-Band includes Error-Based and UNION-Based techniques.
+- Blind SQLi includes Boolean-Based and Time-Based techniques.
+- Database engines have syntax differences.
+- Prepared statements are the primary defence.
+- Always stay within the scope of an authorised lab or engagement.
+
+REFERENCE
+---------
+TryHackMe — SQL Injection Introduction
+https://tryhackme.com/room/sqlinjectionintroduction?pathCode=jrpenetrationtester
+
+These notes are an independent summary for learning and revision.
