@@ -1,0 +1,232 @@
+CROSS-SITE SCRIPTING (XSS) — STUDY NOTES
+TryHackMe: XSS (Cross-site Scripting) Introduction
+==================================================
+
+About these notes
+-----------------
+These are original study notes written in my own words for learning and
+revision. They summarize core XSS concepts and are not copied from TryHackMe's
+lesson text or walkthrough answers.
+
+Only test XSS in intentionally vulnerable labs, your own applications, or
+systems where you have explicit permission.
+
+1. WHAT IS XSS?
+---------------
+Cross-Site Scripting (XSS) is a web security vulnerability that occurs when
+untrusted content is handled in a way that makes a victim's browser interpret
+it as active HTML or script.
+
+It commonly happens when an application places untrusted input into a web page
+without the correct output encoding or safe handling.
+
+Possible impact depends on the application and browser protections:
+- Changing page content or displaying misleading information.
+- Performing actions in the context of the affected site.
+- Accessing information exposed to scripts running in that page's origin.
+- Attempting to misuse an authenticated user's session.
+
+2. HOW XSS HAPPENS
+------------------
+A simplified flow:
+1. A user supplies input to a web application.
+2. The application stores or returns that input.
+3. The application places the input into a page unsafely.
+4. The browser interprets the content in an unintended way.
+
+The key issue is mixing untrusted data with HTML or JavaScript without
+appropriate context-aware handling.
+
+3. TYPES OF XSS
+---------------
+
+A. STORED (PERSISTENT) XSS
+The unsafe input is saved by the application and later displayed to users.
+
+Possible locations:
+- Comments
+- User profiles
+- Forum posts
+- Product reviews
+
+Key point: the content remains stored and may affect users who view the
+affected page later.
+
+B. REFLECTED (NON-PERSISTENT) XSS
+The application immediately includes untrusted request data in its response
+without safe handling.
+
+It commonly involves request parameters or submitted form data.
+
+Key point: the data is reflected in the immediate response rather than saved
+for later.
+
+C. DOM-BASED XSS
+The vulnerability occurs in client-side JavaScript when untrusted data is
+passed to a browser API or DOM operation in an unsafe way.
+
+Key point: the problem is in how client-side code processes data and updates
+the page. The server may not need to modify the response.
+
+4. COMPARISON OF THE THREE TYPES
+--------------------------------
+Stored XSS:
+- Unsafe content is saved by the application.
+- It can affect users who later view the content.
+- Example location: a comment displayed on a page.
+
+Reflected XSS:
+- Unsafe request data is included in the immediate response.
+- It is not necessarily stored.
+- Example location: a search term displayed in a results message.
+
+DOM-Based XSS:
+- Unsafe data is handled by client-side JavaScript.
+- The vulnerable operation changes the page DOM unsafely.
+- Example location: JavaScript inserts untrusted data as HTML.
+
+5. HTML, JAVASCRIPT, AND THE DOM
+--------------------------------
+HTML:
+Defines the structure and content of a web page.
+
+JavaScript:
+Adds behaviour and interactivity to a web page.
+
+DOM (Document Object Model):
+A browser representation of a web page that JavaScript can read and modify.
+
+XSS can occur when untrusted data is inserted into an HTML or JavaScript
+context in a way that the browser interprets as active content.
+
+6. SOURCES AND SINKS (DOM XSS)
+------------------------------
+A source is a place where untrusted data enters client-side code.
+
+Examples:
+- URL query parameters
+- URL fragments
+- User-controlled form values
+- Browser storage
+
+A sink is an operation that can use data in a potentially unsafe way.
+
+Examples of risky DOM sinks include:
+- innerHTML
+- outerHTML
+- document.write()
+
+The security question is whether untrusted data can reach a sink without
+appropriate safe handling.
+
+Safer approaches include using textContent for plain text and creating DOM
+elements through safe APIs rather than building HTML strings from untrusted
+input.
+
+7. COMMON XSS IMPACTS
+---------------------
+Depending on the application's security controls and the victim's permissions,
+XSS may:
+- Change what a user sees on a page.
+- Display misleading content.
+- Perform actions in the context of the affected site.
+- Access data exposed to scripts running in that page's origin.
+- Attempt to misuse an authenticated user's session.
+
+Modern browser protections and cookie settings can limit some impacts, but
+they do not make an XSS vulnerability harmless.
+
+8. HOW TO PREVENT XSS
+---------------------
+A. Context-aware output encoding
+Encode untrusted data for the exact context where it will be placed, such as
+HTML text, an HTML attribute, a URL, or JavaScript.
+
+B. Safe DOM APIs
+Prefer textContent and safe element-creation methods for displaying plain text.
+Avoid inserting untrusted strings as HTML.
+
+C. Input validation
+Validate that input matches the expected format and length. Validation is
+useful, but it is not a replacement for output encoding.
+
+D. HTML sanitisation
+If an application intentionally allows limited HTML, use a reputable,
+maintained HTML sanitisation library with an appropriate configuration.
+
+E. Content Security Policy (CSP)
+A correctly configured CSP can reduce the impact of some script-injection
+issues. It is an additional layer, not a replacement for secure coding.
+
+F. Secure cookies
+HttpOnly cookies cannot be read by JavaScript. Secure and SameSite settings
+also help protect cookies and sessions in relevant situations. These settings
+do not fix the underlying XSS flaw.
+
+9. SAFE LEARNING AND TESTING
+----------------------------
+When practising in a TryHackMe room or another authorised lab:
+1. Read the room instructions and stay within the target scope.
+2. Identify where user-controlled content appears.
+3. Observe how the application displays that content.
+4. Learn whether the context is stored, reflected, or handled by client-side
+   code.
+5. Record the behaviour and the relevant security lesson.
+6. Do not test real users or systems without explicit permission.
+
+10. QUICK REVISION
+------------------
+Q: What does XSS stand for?
+A: Cross-Site Scripting.
+
+Q: What is XSS?
+A: A vulnerability where untrusted content is handled so that a browser
+   interprets it as active script or markup.
+
+Q: What are the three commonly taught types of XSS?
+A: Stored, Reflected, and DOM-Based XSS.
+
+Q: What is Stored XSS?
+A: Unsafe content is saved and later displayed to users.
+
+Q: What is Reflected XSS?
+A: Untrusted request data is included in the immediate response unsafely.
+
+Q: What is DOM-Based XSS?
+A: Client-side code processes untrusted data using an unsafe DOM operation.
+
+Q: What is the DOM?
+A: The browser's object-based representation of a web page.
+
+Q: What is a source?
+A: A place where untrusted data enters client-side code.
+
+Q: What is a sink?
+A: An operation that may use data in an unsafe way.
+
+Q: Name a safer way to display plain text in JavaScript.
+A: Use textContent rather than inserting the value as HTML.
+
+Q: What is the main defence against XSS?
+A: Context-aware output encoding, supported by safe DOM APIs and appropriate
+   sanitisation when HTML is intentionally allowed.
+
+11. KEY TAKEAWAYS
+-----------------
+- XSS is a client-side web security vulnerability.
+- It occurs when untrusted content is interpreted unsafely by the browser.
+- The three main types are Stored, Reflected, and DOM-Based XSS.
+- Stored XSS is saved; Reflected XSS is returned immediately; DOM-Based XSS
+  involves unsafe client-side DOM handling.
+- Sources introduce untrusted data; sinks are operations that may use it
+  unsafely.
+- Use context-aware output encoding and safe DOM APIs.
+- CSP and secure cookie settings are defence-in-depth measures.
+- Practise only in authorised labs and systems.
+
+REFERENCE
+---------
+TryHackMe — XSS (Cross-site Scripting) Introduction
+https://tryhackme.com/room/xss
+
+These notes are an independent summary for learning and GitHub revision.
